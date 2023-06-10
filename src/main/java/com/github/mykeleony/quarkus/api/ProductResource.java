@@ -1,9 +1,7 @@
-package com.github.mykeleony.quarkus;
+package com.github.mykeleony.quarkus.api;
 
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import com.github.mykeleony.quarkus.domain.model.Product;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;

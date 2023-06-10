@@ -1,4 +1,4 @@
-package com.github.mykeleony.quarkus;
+package com.github.mykeleony.quarkus.domain.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
