@@ -9,6 +9,7 @@ import jakarta.ws.rs.core.MediaType;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 
 @Path("products")
 @Produces(MediaType.APPLICATION_JSON)
@@ -29,6 +30,23 @@ public class ProductResource {
         Product product = productMapper.toEntity(productInput);
 
         product.persist();
+    }
+
+    @PUT
+    @Path("{id}")
+    @Transactional
+    public void updateProduct(@PathParam("id") Long id, ProductInput productInput) {
+        Optional<Product> optionalProduct = Product.findByIdOptional(id);
+
+        if (optionalProduct.isPresent()) {
+            Product product = optionalProduct.get();
+            product.setName(productInput.getName());
+            product.setUnitPrice(productInput.getUnitPrice());
+
+            product.persist();
+        } else {
+            throw new NotFoundException();
+        }
     }
 
 }
